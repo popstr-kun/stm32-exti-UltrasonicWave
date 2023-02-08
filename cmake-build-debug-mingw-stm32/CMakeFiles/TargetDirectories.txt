@@ -1,0 +1,3 @@
+D:/balanceCar_project/UltrasonicWave/cmake-build-debug-mingw-stm32/CMakeFiles/UltrasonicWave.elf.dir
+D:/balanceCar_project/UltrasonicWave/cmake-build-debug-mingw-stm32/CMakeFiles/edit_cache.dir
+D:/balanceCar_project/UltrasonicWave/cmake-build-debug-mingw-stm32/CMakeFiles/rebuild_cache.dir
