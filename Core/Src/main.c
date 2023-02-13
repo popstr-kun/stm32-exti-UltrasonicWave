@@ -129,10 +129,11 @@ int main(void)
       if(low_flag == SET){
           double distance;
           low_flag = RESET;
+
           distance = ((float )counter/2.)/29.154;
           sprintf(buffer,"%.3lf cm%c ",distance,'\n');
           CDC_Transmit_FS((uint8_t *)buffer, strlen(buffer));
-          //CDC_Transmit_FS((uint8_t *)"Start", strlen("Start"));
+
           __HAL_GPIO_EXTI_CLEAR_FLAG(ECHO_Pin);
           __HAL_GPIO_EXTI_CLEAR_IT(ECHO_Pin);
           HAL_NVIC_ClearPendingIRQ(EXTI1_IRQn);
@@ -142,7 +143,8 @@ int main(void)
           HAL_Delay(1000);
       }
 
-      if(up_flag == SET){
+      else if(up_flag == SET){
+          up_flag = RESET;
           __HAL_GPIO_EXTI_CLEAR_FLAG(ECHO_Pin);
           __HAL_GPIO_EXTI_CLEAR_IT(ECHO_Pin);
           HAL_NVIC_ClearPendingIRQ(EXTI1_IRQn);
