@@ -1,0 +1,3 @@
+C:/Users/STH/OneDrive/Documents/STM32/stm32-exti-UltrasonicWave/cmake-build-debug-mingw_stm32/CMakeFiles/UltrasonicWave.elf.dir
+C:/Users/STH/OneDrive/Documents/STM32/stm32-exti-UltrasonicWave/cmake-build-debug-mingw_stm32/CMakeFiles/edit_cache.dir
+C:/Users/STH/OneDrive/Documents/STM32/stm32-exti-UltrasonicWave/cmake-build-debug-mingw_stm32/CMakeFiles/rebuild_cache.dir
