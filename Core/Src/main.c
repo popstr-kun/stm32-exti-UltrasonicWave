@@ -46,7 +46,6 @@
 
 /* USER CODE BEGIN PV */
 extern uint8_t low_flag;
-extern uint8_t up_flag;
 
 extern uint32_t counter;
 
@@ -107,11 +106,8 @@ int main(void)
   MX_TIM1_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
+    HAL_TIM_Base_Start(&htim1);
     CDC_Transmit_FS((uint8_t *)"Start", strlen("Start"));
-    TRIG_GPIO_Port->BSRR = TRIG_Pin;
-    delay_us(12);
-    TRIG_GPIO_Port->BRR = TRIG_Pin;
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -134,22 +130,9 @@ int main(void)
           sprintf(buffer,"%.3lf cm%c ",distance,'\n');
           CDC_Transmit_FS((uint8_t *)buffer, strlen(buffer));
 
-          __HAL_GPIO_EXTI_CLEAR_FLAG(ECHO_Pin);
-          __HAL_GPIO_EXTI_CLEAR_IT(ECHO_Pin);
-          HAL_NVIC_ClearPendingIRQ(EXTI1_IRQn);
-          HAL_NVIC_EnableIRQ(EXTI1_IRQn);
-
-
           HAL_Delay(1000);
       }
 
-      else if(up_flag == SET){
-          up_flag = RESET;
-          __HAL_GPIO_EXTI_CLEAR_FLAG(ECHO_Pin);
-          __HAL_GPIO_EXTI_CLEAR_IT(ECHO_Pin);
-          HAL_NVIC_ClearPendingIRQ(EXTI1_IRQn);
-          HAL_NVIC_EnableIRQ(EXTI1_IRQn);
-      }
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

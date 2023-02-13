@@ -32,7 +32,7 @@
 extern TIM_HandleTypeDef htim1;
 
 uint32_t counter;
-uint8_t up_flag , low_flag;
+uint8_t  low_flag;
 /* USER CODE END 1 */
 
 /** Configure pins as
@@ -79,15 +79,11 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
     if(GPIO_Pin == ECHO_Pin){
         if(HAL_GPIO_ReadPin(ECHO_GPIO_Port,ECHO_Pin) == SET){
             TIM1->CNT = 0;
-            HAL_TIM_Base_Start(&htim1);
-            up_flag = SET;
         }
         if(HAL_GPIO_ReadPin(ECHO_GPIO_Port,ECHO_Pin) == RESET){
-            HAL_TIM_Base_Stop(&htim1);
             counter = TIM1->CNT;
             low_flag = SET;
         }
-        HAL_NVIC_DisableIRQ(EXTI1_IRQn);
     }
 }
 /* USER CODE END 2 */
